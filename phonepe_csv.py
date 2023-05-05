@@ -104,7 +104,7 @@ ta,tc,st1= st.tabs(
 #transcation amount data
 
 with ta:
-    d=pd.read_csv(r"C:\Users\admin\Capstone\Phonepe\CSV\Agg_trans.csv")
+    d=pd.read_csv("CSV/Agg_trans.csv")
     #ye= int(st.radio('Select the Year',('2018', '2019', '2020', '2021', '2022'), horizontal=True, key='ye'))
     a=d.groupby(['State','Year']).sum()['Transacion_amount']
     a.reset_index()
@@ -113,7 +113,7 @@ with ta:
     st.plotly_chart(li)
 
 with tc:
-    e=pd.read_csv(r"C:\Users\admin\Capstone\Phonepe\CSV\Agg_trans.csv")
+    e=pd.read_csv("CSV/Agg_trans.csv")
     b=d.groupby(['State','Year']).sum()['Transacion_count']
     b.reset_index()
    
