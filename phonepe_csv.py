@@ -18,7 +18,7 @@ user_device = pd.read_csv("CSV/user_by_device.csv")
 
 
 # title
-st.markdown("<h1 style='text-align: center; color: purple;'>PhonePe Pulse Data Analysis </h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: purple;'>PhonePe Pulse Data Visualization and Exploration </h1>", unsafe_allow_html=True)
 
 
 
