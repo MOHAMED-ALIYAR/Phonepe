@@ -258,7 +258,7 @@ with Device_analysis:
 with payment_analysis:
     st.subheader(':black[Payment type Analysis]')
 
-    payment_mode = pd.read_csv(r"C:\Users\admin\Capstone\Phonepe\CSV\Agg_trans.csv")
+    payment_mode = pd.read_csv("CSV\Agg_trans.csv")
     pie_pay_mode_state = st.selectbox('Please select State', ('andaman-&-nicobar-islands', 'andhra-pradesh', 'arunachal-pradesh',
                                                               'assam', 'bihar', 'chandigarh', 'chhattisgarh',
                                                               'dadra-&-nagar-haveli-&-daman-&-diu', 'delhi', 'goa', 'gujarat',
@@ -304,7 +304,7 @@ with transac_yearwise:
                                 ('Recharge & bill payments', 'Peer-to-peer payments', 'Merchant payments', 'Financial Services', 'Others'), key='transactype')
     transac_values = st.selectbox(
         'Please select the values to visualize', ('Transacion_count', 'Transacion_amount'), key='transacvalues')
-    payment_mode_yearwise = pd.read_csv(r"C:\Users\admin\Capstone\Phonepe\CSV\Agg_trans.csv")
+    payment_mode_yearwise = pd.read_csv("CSV\Agg_trans.csv")
 
     new_df = payment_mode_yearwise.groupby(
         ['State', 'Year', 'Quater', 'Transacion_type']).sum()
