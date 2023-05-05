@@ -114,7 +114,7 @@ with ta:
     st.plotly_chart(li)
 
 with tc:
-    st.subheader(""Trancation amount in year")
+    st.subheader("Trancation count in year")
     e=pd.read_csv("CSV/Agg_trans.csv")
     b=d.groupby(['State','Year']).sum()['Transacion_count']
     b.reset_index()
@@ -123,7 +123,7 @@ with tc:
     st.plotly_chart(li2)
 
 with st1:
-    st.subheader('Registered user & App openings')
+    st.subheader('Registered user and App openings')
     st.write(' ')
     scatter_year = st.selectbox('Select the Year',
                                 ('2018', '2019', '2020', '2021', '2022'))
