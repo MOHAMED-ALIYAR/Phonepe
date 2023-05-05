@@ -109,8 +109,18 @@ with ta:
     #ye= int(st.radio('Select the Year',('2018', '2019', '2020', '2021', '2022'), horizontal=True, key='ye'))
     a=d.groupby(['State','Year']).sum()['Transacion_amount']
     a.reset_index()
-   
-    li=px.line(d,x='Year',y='Transacion_amount',color='State')
+    sca = st.selectbox('Select the State', ('andaman-&-nicobar-islands', 'andhra-pradesh', 'arunachal-pradesh',
+                                                         'assam', 'bihar', 'chandigarh', 'chhattisgarh',
+                                                         'dadra-&-nagar-haveli-&-daman-&-diu', 'delhi', 'goa', 'gujarat',
+                                                         'haryana', 'himachal-pradesh', 'jammu-&-kashmir', 'jharkhand',
+                                                         'karnataka', 'kerala', 'ladakh', 'lakshadweep', 'madhya-pradesh',
+                                                         'maharashtra', 'manipur', 'meghalaya', 'mizoram', 'nagaland',
+                                                         'odisha', 'puducherry', 'punjab', 'rajasthan', 'sikkim',
+                                                         'tamil-nadu', 'telangana', 'tripura', 'uttar-pradesh',
+                                                         'uttarakhand', 'west-bengal'))
+    
+    sca1=d[d['State']==sca]
+    li=px.line(sca1,x='Year',y='Transacion_amount')
     st.plotly_chart(li)
 
 with tc:
@@ -118,10 +128,22 @@ with tc:
     e=pd.read_csv("CSV/Agg_trans.csv")
     b=d.groupby(['State','Year']).sum()['Transacion_count']
     b.reset_index()
-   
-    li2=px.line(df,x='Year',y='Transacion_count',color='State')
-    st.plotly_chart(li2)
+    sc = st.selectbox('Select the State', ('andaman-&-nicobar-islands', 'andhra-pradesh', 'arunachal-pradesh',
+                                                         'assam', 'bihar', 'chandigarh', 'chhattisgarh',
+                                                         'dadra-&-nagar-haveli-&-daman-&-diu', 'delhi', 'goa', 'gujarat',
+                                                         'haryana', 'himachal-pradesh', 'jammu-&-kashmir', 'jharkhand',
+                                                         'karnataka', 'kerala', 'ladakh', 'lakshadweep', 'madhya-pradesh',
+                                                         'maharashtra', 'manipur', 'meghalaya', 'mizoram', 'nagaland',
+                                                         'odisha', 'puducherry', 'punjab', 'rajasthan', 'sikkim',
+                                                         'tamil-nadu', 'telangana', 'tripura', 'uttar-pradesh',
+                                                         'uttarakhand', 'west-bengal'),index=22)
 
+    sc1=d[d['State']==sc]
+
+
+   
+    li2=px.line(sc1,x='Year',y='Transacion_count')
+    st.plotly_chart(li2)
 with st1:
     st.subheader('Registered user and App openings')
     st.write(' ')
