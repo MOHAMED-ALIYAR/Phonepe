@@ -104,6 +104,7 @@ ta,tc,st1= st.tabs(
 #transcation amount data
 
 with ta:
+    st.subheader("Trancation amount in year")
     d=pd.read_csv("CSV/Agg_trans.csv")
     #ye= int(st.radio('Select the Year',('2018', '2019', '2020', '2021', '2022'), horizontal=True, key='ye'))
     a=d.groupby(['State','Year']).sum()['Transacion_amount']
@@ -113,6 +114,7 @@ with ta:
     st.plotly_chart(li)
 
 with tc:
+    st.subheader(""Trancation amount in year")
     e=pd.read_csv("CSV/Agg_trans.csv")
     b=d.groupby(['State','Year']).sum()['Transacion_count']
     b.reset_index()
@@ -121,8 +123,7 @@ with tc:
     st.plotly_chart(li2)
 
 with st1:
-    st.subheader(
-        ':violet[Registered user & App installed -> State and Districtwise:]')
+    st.subheader('Registered user & App openings')
     st.write(' ')
     scatter_year = st.selectbox('Select the Year',
                                 ('2018', '2019', '2020', '2021', '2022'))
