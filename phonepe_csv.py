@@ -269,10 +269,6 @@ with geo_analysis:
     
 # Device analysis statewise
 with Device_analysis:
-    #with st.container():
-    a1=px.scatter(user_device,x='Year',y='Brand_count',color='Brand',hover_name='Brand_percentage',title='Scatter chart analysis')
-
-    st.plotly_chart(a1)
    #barchart
     bar_user = px.bar(user_device, x='Brand', y='Brand_count', color='Brand',
                       title='Bar chart analysis')
