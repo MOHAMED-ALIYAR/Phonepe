@@ -298,12 +298,6 @@ with payment_analysis:
     # Pie chart 
     pie_pay_mode = px.pie(pie_payment_mode, values=pie_pay_mode_values,
                           names='Transacion_type', hole=.5, hover_data=['Year'])
-    # Bar chart 
-    pay_bar = px.bar(pie_payment_mode, x='Transacion_type',
-                     y=pie_pay_mode_values, color='Transacion_type')
-    st.plotly_chart(pay_bar)
-    st.plotly_chart(pie_pay_mode)
-
 
 # Transacion data analysis statewise
 with transac_yearwise:
