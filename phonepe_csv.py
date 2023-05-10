@@ -273,7 +273,7 @@ with Device_analysis:
     device=pd.read_csv("CSV/user_by_device.csv")
     dev_year = int(st.radio('Please select the Year',
                                      ('2018', '2019', '2020', '2021', '2022'), horizontal=True, key='pie_pay'))
-    dev=device[device['Year']=dev_year]
+    dev=device[device['Year']==dev_year]
     bar_user = px.bar(dev, x='Brand', y='Brand_count', color='Brand',
                       title='Bar chart analysis')
     st.plotly_chart(bar_user)
