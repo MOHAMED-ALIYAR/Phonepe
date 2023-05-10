@@ -85,7 +85,11 @@ with st.container():
     c=ab.reset_index()
     b=ab.groupby(['State']).sum()[['Transaction_amount','Transaction_count']]
     e=b.reset_index()
-    d= px.bar(e,x='State',y='Transaction_amount')
+    year1 = st.radio('Please select the Year',
+                ('2018', '2019', '2020', '2021', '2022'), horizontal=True)
+    f=e[e['Year']==year1]
+    d= px.bar(f,x='State',y='Transaction_amount')
+    #d= px.bar(e,x='State',y='Transaction_amount')
     st.plotly_chart(d)
     st.subheader('Total Transaction amount in pie chart')
     e= px.pie(e, values='Transaction_amount',names='State', hole=.5)
