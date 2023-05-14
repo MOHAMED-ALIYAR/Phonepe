@@ -39,7 +39,7 @@ top_states_r = top_states.sort_values(by=['Registered_user'], ascending=False)
 top_states_a = top_states.sort_values(by=['App_opening'], ascending=False) 
 
 Data_Aggregated_Transaction_df=df.copy()
-top_states_T=Data_Aggregated_Transaction_df.[(Data_Aggregated_Transaction_df['Year'] == int(Year)) & (Data_Aggregated_Transaction_df['Quater'] ==int(Quarter))]
+top_states_T=Data_Aggregated_Transaction_df[(Data_Aggregated_Transaction_df['Year'] == int(Year)) & (Data_Aggregated_Transaction_df['Quater'] ==int(Quarter))]
 topst=top_states_T.groupby('State')
 x=topst.sum().sort_values(by=['Transacion_count'], ascending=False)
 y=topst.sum().sort_values(by=['Transacion_amount'], ascending=False)
