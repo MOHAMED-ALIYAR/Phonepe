@@ -131,7 +131,7 @@ ta,tc,st1= st.tabs(
 
 with ta:
     st.subheader("Trancation amount in year")
-    d=pd.read_csv("CSV/Agg_trans.csv")
+    d=pd.read_sql(query1, con=connection)
     #ye= int(st.radio('Select the Year',('2018', '2019', '2020', '2021', '2022'), horizontal=True, key='ye'))
     a=d.groupby(['State','Year']).sum()['Transacion_amount']
     a.reset_index()
@@ -151,7 +151,7 @@ with ta:
 
 with tc:
     st.subheader("Trancation count in year")
-    e=pd.read_csv("CSV/Agg_trans.csv")
+    #e=pd.read_sql(query1, con=connection)
     b=d.groupby(['State','Year']).sum()['Transacion_count']
     b.reset_index()
     sc = st.selectbox('Select the State', ('andaman-&-nicobar-islands', 'andhra-pradesh', 'arunachal-pradesh',
@@ -297,7 +297,7 @@ with geo_analysis:
 # Device analysis statewise
 with Device_analysis:
    #barchart
-    device=pd.read_csv("CSV/user_by_device.csv")
+    device=pd.read_sql(query6, con=connection)
     dev_year = int(st.radio('Please select the Year',
                                      ('2018', '2019', '2020', '2021', '2022'), horizontal=True, key='pie_pay'))
     dev=device[device['Year']==dev_year]
@@ -350,7 +350,7 @@ with transac_yearwise:
                                 ('Recharge & bill payments', 'Peer-to-peer payments', 'Merchant payments', 'Financial Services', 'Others'), key='transactype')
     transac_values = st.selectbox(
         'Please select the values to visualize', ('Transacion_count', 'Transacion_amount'), key='transacvalues')
-    payment_mode_yearwise = pd.read_csv(r"C:\Users\admin\Capstone\Phonepe\CSV\Agg_trans.csv")
+    payment_mode_yearwise = df = pd.read_sql(query1, con=connection)
 
     new_df = payment_mode_yearwise.groupby(
         ['State', 'Year', 'Quater', 'Transacion_type']).sum()
