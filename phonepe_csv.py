@@ -91,7 +91,7 @@ with c4:
 
 # total transaction amount in bar
 with st.container():
-    st.subheader('Total Transaction amount in bar chart')
+    st.subheader('Total Transaction amount in States')
     ab= pd.read_csv("CSV/top_tran.csv")
     c=ab.reset_index()
     b=ab.groupby(['State']).sum()[['Transaction_amount','Transaction_count']]
