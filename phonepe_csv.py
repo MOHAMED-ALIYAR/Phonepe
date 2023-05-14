@@ -61,7 +61,7 @@ with c2:
     at=top_states_a[1:6]
     st.subheader("App Openings")
     c7,c8=st.columns(2)
-    withc7:
+    with c7:
         st.markdown(at[['State','App_opening']].style.hide(axis="index").to_html(), unsafe_allow_html=True)
     with c8:
         z1= px.pie(rt, values='App_opening',names='State', hole=.5)
