@@ -46,8 +46,7 @@ y=topst.sum().sort_values(by=['Transacion_amount'], ascending=False)
 
 
 c1,c2,c3,c4= st.tabs(['Registered_user','App_openings','Transaction_count','Transaction_amount'])
-#geo_analysis, Device_analysis, payment_analysis, transac_yearwise = st.tabs(
-#    ["Geographical analysis", "User device analysis", "Payment Types analysis", "Transacion analysis of States"])
+
 with c1:
     
     st.subheader('Registered User')
