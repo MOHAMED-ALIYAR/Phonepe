@@ -42,53 +42,67 @@ c1,c2=st.columns(2)
 with c1:
     Year = st.selectbox(
             'Select the Year',
-            ('2022', '2021','2020','2019','2018'),key='y1h2k')
+            ('2022', '2021','2020','2019','2018'),key='dfg')
 with c2:
     Quarter = st.selectbox(
             'Select the Quatrer',
-            ('1', '2', '3','4'),key='qgwe2')
+            ('1', '2', '3','4'),key='fgh')
 Data_Map_User_df=app_opening.copy() 
-top_states=Data_Map_User_df.loc[(Data_Map_User_df['Year'] == int(Year)) & (Data_Map_User_df['Quater'] ==int(Quarter))]
+top_states=Data_Map_User_df[(Data_Map_User_df['Year'] == int(Year)) & (Data_Map_User_df['Quater'] ==int(Quarter))]
 top_states_r = top_states.sort_values(by=['Registered_user'], ascending=False)
 top_states_a = top_states.sort_values(by=['App_opening'], ascending=False) 
 
 Data_Aggregated_Transaction_df=df.copy()
-top_states_T=Data_Aggregated_Transaction_df.loc[(Data_Aggregated_Transaction_df['Year'] == int(Year)) & (Data_Aggregated_Transaction_df['Quater'] ==int(Quarter))]
+top_states_T=Data_Aggregated_Transaction_df[(Data_Aggregated_Transaction_df['Year'] == int(Year)) & (Data_Aggregated_Transaction_df['Quater'] ==int(Quarter))]
 topst=top_states_T.groupby('State')
 x=topst.sum().sort_values(by=['Transacion_count'], ascending=False)
 y=topst.sum().sort_values(by=['Transacion_amount'], ascending=False)
 
 
 c1,c2,c3,c4= st.tabs(['Registered_user','App_openings','Transaction_count','Transaction_amount'])
-#geo_analysis, Device_analysis, payment_analysis, transac_yearwise = st.tabs(
-#    ["Geographical analysis", "User device analysis", "Payment Types analysis", "Transacion analysis of States"])
+
 with c1:
     
     st.subheader('Registered User')
-    rt=top_states_r[1:6]
-    st.markdown(rt[[ 'State','Registered_user']].style.hide(axis="index").to_html(), unsafe_allow_html=True)
-    z= px.pie(rt, values='Registered_user',names='State', hole=.5)
-    st.plotly_chart(z)
+    c5,c6=st.columns(2)
+    with c5:
+        rt=top_states_r[1:6]
+        st.markdown(rt[[ 'State','Registered_user']].style.hide(axis="index").to_html(), unsafe_allow_html=True)
+    with c6:
+        z= px.pie(rt, values='Registered_user',names='State', hole=.5)
+        st.plotly_chart(z)
 with c2:
     at=top_states_a[1:6]
     st.subheader("App Openings")
-    st.markdown(at[['State','App_opening']].style.hide(axis="index").to_html(), unsafe_allow_html=True)
-    z1= px.pie(rt, values='App_opening',names='State', hole=.5)
-    st.plotly_chart(z1)
+    c7,c8=st.columns(2)
+    with c7:
+        st.markdown(at[['State','App_opening']].style.hide(axis="index").to_html(), unsafe_allow_html=True)
+    with c8:
+        z1= px.pie(rt, values='App_opening',names='State', hole=.5)
+        st.plotly_chart(z1)
 with c3:
     st.subheader("Transactions Count")
-    z3=pd.DataFrame(x[['Transacion_count']][1:6])
-    st.write(z3)
-    z4= px.pie(z3, values='Transacion_count', hole=.5)
-    st.plotly_chart(z4)    
+    c9,c10=st.columns(2)
+    with c9:
+        z3=pd.DataFrame(x[['Transacion_count']][1:6])
+        st.write(z3)
+    with c10:
+        z4= px.pie(z3, values='Transacion_count', hole=.5)
+        st.plotly_chart(z4)    
     
 with c4:
     st.subheader("Transaction Amount ")
-    z5=(y['Transacion_amount'][1:6])   
-    st.write(z5)
-    z6= px.pie(z5, values='Transacion_amount', hole=.5)
-    st.plotly_chart(z6)
+    c11,c12=st.columns(2)
+    with c11:
+        z5=(y['Transacion_amount'][1:6])   
+        st.write(z5)
+    with c12:
+        
+        z6= px.pie(z5, values='Transacion_amount', hole=.5)
+        st.plotly_chart(z6)
     
+
+
 
 
 # total transaction amount in bar and pie
@@ -101,9 +115,7 @@ with st.container():
     e=b.reset_index()
     d= px.bar(e,x='State',y='Transaction_amount')
     st.plotly_chart(d)
-    st.subheader('Total Transaction amount in pie chart')
-    e= px.pie(e, values='Transaction_amount',names='State', hole=.5)
-    st.plotly_chart(e)
+
 
 
 
