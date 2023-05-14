@@ -27,6 +27,11 @@ query5 = 'select * from district_map_registering_table'
 app_opening = pd.read_sql(query5, con=connection)
 query6 = 'select * from agg_userbydevice_table'
 user_device = pd.read_sql(query6, con=connection)
+query7 = 'select * from top_tran_table'
+top_tran = pd.read_sql(query7, con=connection)
+query8 = 'select * from top_user_table'
+top_user = pd.read_sql(query8, con=connection)
+
 
 
 
@@ -109,7 +114,7 @@ with c4:
 
 with st.container():
     st.subheader('Total Transaction amount in bar chart')
-    ab= pd.read_csv(r"C:\Users\admin\Capstone\Phonepe\CSV\top_tran.csv")
+    ab= pd.read_sql(query7,con=connection)
     c=ab.reset_index()
     b=ab.groupby(['State']).sum()[['Transaction_amount','Transaction_count']]
     e=b.reset_index()
