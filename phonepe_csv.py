@@ -99,10 +99,6 @@ with c15:
     e=b.reset_index()
     d= px.bar(e,x='State',y='Transaction_amount')
     st.plotly_chart(d)
-with c16:    
-    st.subheader('Total Transaction amount in pie chart')
-    e= px.pie(e, values='Transaction_amount',names='State', hole=.5)
-    st.plotly_chart(e)
 
 
 
