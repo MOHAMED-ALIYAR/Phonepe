@@ -13,9 +13,8 @@ districts = pd.read_csv("CSV/Data_Map_Districts_Longitude_Latitude.csv")
 districts_tran = pd.read_csv("CSV/district_map_transaction.csv")
 app_opening = pd.read_csv("CSV/district_registering_map.csv")
 user_device = pd.read_csv("CSV/user_by_device.csv")
-top_tran = pd.read_csv("CSV\")
-
-top_user = pd.read_csv("CSV\")
+top_tran = pd.read_csv("CSV\top_tran.csv")
+top_user = pd.read_csv("CSV\top_user.csv")
 
 
 
