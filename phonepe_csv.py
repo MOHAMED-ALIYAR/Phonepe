@@ -28,18 +28,18 @@ c1,c2=st.columns(2)
 with c1:
     Year = st.selectbox(
             'Select the Year',
-            ('2022', '2021','2020','2019','2018'),key='y1h2k')
+            ('2022', '2021','2020','2019','2018'),key='dfg')
 with c2:
     Quarter = st.selectbox(
             'Select the Quatrer',
-            ('1', '2', '3','4'),key='qgwe2')
+            ('1', '2', '3','4'),key='fgh')
 Data_Map_User_df=app_opening.copy() 
-top_states=Data_Map_User_df.loc[(Data_Map_User_df['Year'] == int(Year)) & (Data_Map_User_df['Quater'] ==int(Quarter))]
+top_states=Data_Map_User_df[(Data_Map_User_df['Year'] == int(Year)) & (Data_Map_User_df['Quater'] ==int(Quarter))]
 top_states_r = top_states.sort_values(by=['Registered_user'], ascending=False)
 top_states_a = top_states.sort_values(by=['App_opening'], ascending=False) 
 
 Data_Aggregated_Transaction_df=df.copy()
-top_states_T=Data_Aggregated_Transaction_df.loc[(Data_Aggregated_Transaction_df['Year'] == int(Year)) & (Data_Aggregated_Transaction_df['Quater'] ==int(Quarter))]
+top_states_T=Data_Aggregated_Transaction_df.[(Data_Aggregated_Transaction_df['Year'] == int(Year)) & (Data_Aggregated_Transaction_df['Quater'] ==int(Quarter))]
 topst=top_states_T.groupby('State')
 x=topst.sum().sort_values(by=['Transacion_count'], ascending=False)
 y=topst.sum().sort_values(by=['Transacion_amount'], ascending=False)
