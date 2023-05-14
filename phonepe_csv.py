@@ -50,10 +50,13 @@ c1,c2,c3,c4= st.tabs(['Registered_user','App_openings','Transaction_count','Tran
 with c1:
     
     st.subheader('Registered User')
-    rt=top_states_r[1:6]
-    st.markdown(rt[[ 'State','Registered_user']].style.hide(axis="index").to_html(), unsafe_allow_html=True)
-    z= px.pie(rt, values='Registered_user',names='State', hole=.5)
-    st.plotly_chart(z)
+    c5,c6=st.columns(2)
+    with c5:
+        rt=top_states_r[1:6]
+        st.markdown(rt[[ 'State','Registered_user']].style.hide(axis="index").to_html(), unsafe_allow_html=True)
+    with c6:
+        z= px.pie(rt, values='Registered_user',names='State', hole=.5)
+        st.plotly_chart(z)
 with c2:
     at=top_states_a[1:6]
     st.subheader("App Openings")
