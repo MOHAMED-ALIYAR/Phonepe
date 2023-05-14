@@ -90,16 +90,16 @@ with c4:
 
 
 # total transaction amount in bar and pie
-
-with st.container():
+c15,c16=st.columns(2)
+with c15:
     st.subheader('Total Transaction amount in bar chart')
     ab= pd.read_csv("CSV/top_tran.csv")
     c=ab.reset_index()
     b=ab.groupby(['State']).sum()[['Transaction_amount','Transaction_count']]
     e=b.reset_index()
-
     d= px.bar(e,x='State',y='Transaction_amount')
     st.plotly_chart(d)
+with c16:    
     st.subheader('Total Transaction amount in pie chart')
     e= px.pie(e, values='Transaction_amount',names='State', hole=.5)
     st.plotly_chart(e)
