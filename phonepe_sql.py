@@ -308,7 +308,7 @@ with Device_analysis:
 with payment_analysis:
     st.subheader(':black[Payment type Analysis]')
 
-    payment_mode = pd.read_csv(r"C:\Users\admin\Capstone\Phonepe\CSV\Agg_trans.csv")
+    payment_mode = pd.read_sql(query1, con=connection)
     pie_pay_mode_state = st.selectbox('Please select State', ('andaman-&-nicobar-islands', 'andhra-pradesh', 'arunachal-pradesh',
                                                               'assam', 'bihar', 'chandigarh', 'chhattisgarh',
                                                               'dadra-&-nagar-haveli-&-daman-&-diu', 'delhi', 'goa', 'gujarat',
