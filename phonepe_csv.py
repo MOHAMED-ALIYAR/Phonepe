@@ -60,22 +60,32 @@ with c1:
 with c2:
     at=top_states_a[1:6]
     st.subheader("App Openings")
-    st.markdown(at[['State','App_opening']].style.hide(axis="index").to_html(), unsafe_allow_html=True)
-    z1= px.pie(rt, values='App_opening',names='State', hole=.5)
-    st.plotly_chart(z1)
+    c7,c8=st.columns(2)
+    withc7:
+        st.markdown(at[['State','App_opening']].style.hide(axis="index").to_html(), unsafe_allow_html=True)
+    with c8:
+        z1= px.pie(rt, values='App_opening',names='State', hole=.5)
+        st.plotly_chart(z1)
 with c3:
     st.subheader("Transactions Count")
-    z3=pd.DataFrame(x[['Transacion_count']][1:6])
-    st.write(z3)
-    z4= px.pie(z3, values='Transacion_count', hole=.5)
-    st.plotly_chart(z4)    
+    c9,c10=st.columns(2)
+    with c9:
+        z3=pd.DataFrame(x[['Transacion_count']][1:6])
+        st.write(z3)
+    with c10:
+        z4= px.pie(z3, values='Transacion_count', hole=.5)
+        st.plotly_chart(z4)    
     
 with c4:
     st.subheader("Transaction Amount ")
-    z5=(y['Transacion_amount'][1:6])   
-    st.write(z5)
-    z6= px.pie(z5, values='Transacion_amount', hole=.5)
-    st.plotly_chart(z6)
+    c11,c12=st.columns(2)
+    with c11:
+        z5=(y['Transacion_amount'][1:6])   
+        st.write(z5)
+    with c12:
+        
+        z6= px.pie(z5, values='Transacion_amount', hole=.5)
+        st.plotly_chart(z6)
     
 
 
