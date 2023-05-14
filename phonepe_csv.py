@@ -89,9 +89,8 @@ with c4:
     
 
 
-# total transaction amount in bar and pie
-c15,c16=st.columns(2)
-with c15:
+# total transaction amount in bar
+with st.container():
     st.subheader('Total Transaction amount in bar chart')
     ab= pd.read_csv("CSV/top_tran.csv")
     c=ab.reset_index()
