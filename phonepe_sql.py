@@ -297,7 +297,11 @@ with geo_analysis:
 # Device analysis statewise
 with Device_analysis:
    #barchart
-    bar_user = px.bar(user_device, x='Brand', y='Brand_count', color='Brand',
+    device=pd.read_csv("CSV/user_by_device.csv")
+    dev_year = int(st.radio('Please select the Year',
+                                     ('2018', '2019', '2020', '2021', '2022'), horizontal=True, key='pie_pay'))
+    dev=device[device['Year']==dev_year]
+    bar_user = px.bar(dev, x='Brand', y='Brand_count', color='Brand',
                       title='Bar chart analysis')
     st.plotly_chart(bar_user)
 # Payment type analysis of Transacion data 
@@ -325,11 +329,7 @@ with payment_analysis:
     # Pie chart 
     pie_pay_mode = px.pie(pie_payment_mode, values=pie_pay_mode_values,
                           names='Transacion_type', hole=.5, hover_data=['Year'])
-    # Bar chart 
-    pay_bar = px.bar(pie_payment_mode, x='Transacion_type',
-                     y=pie_pay_mode_values, color='Transacion_type')
-    st.plotly_chart(pay_bar)
-    st.plotly_chart(pie_pay_mode)
+ 
 
 
 # Transacion data analysis statewise
